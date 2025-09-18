@@ -1,0 +1,16 @@
+{
+	"id": "jokerloadouts",
+	"name": "Joker Loadouts",
+	"display_name": "Joker Loadouts",
+	"author": [
+		"cg"
+	],
+	"description": "Mod allowing for Joker orders to be saved and loaded.",
+	"prefix": "jld",
+	"main_file": "steamodded.lua",
+	"priority": 0,
+	"badge_colour": "FFFFFF",
+	"badge_text_colour": "FFFFFF",
+	"allow_redistribution": true,
+	"version": "0.0.1"
+}
