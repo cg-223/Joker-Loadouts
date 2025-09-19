@@ -9,40 +9,11 @@ function G:start_run(args)
                 align = "cm",
                 minw = 1,
                 minh = 0.3,
-                padding = 0.15,
+                padding = 0.05,
                 r = 0.1,
                 colour = G.C.CLEAR
             },
             nodes = {
-                {
-                    n = G.UIT.C,
-                    config = {
-                        align = "tm",
-                        minw = 1,
-                        padding = 0.1,
-                        r = 0.1,
-                        hover = true,
-                        colour = G.C.RED,
-                        shadow = true,
-                        button = "jkrldts_save",
-                    },
-                    nodes = {
-                        {
-                            n = G.UIT.R,
-                            config = { align = "bcm", padding = 0 },
-                            nodes = {
-                                {
-                                    n = G.UIT.T,
-                                    config = {
-                                        text = "Save",
-                                        scale = 0.35,
-                                        colour = G.C.UI.TEXT_LIGHT
-                                    }
-                                }
-                            }
-                        },
-                    }
-                },
                 {
                     n = G.UIT.C,
                     config = {
@@ -171,12 +142,6 @@ function G:start_run(args)
     self.HUD:recalculate()
 end
 
-function G.FUNCS.jkrldts_save()
-    if G.GAME.current_loadout then
-        JKRLDTS.save_loadout(G.GAME.current_loadout or 0)
-    end
-end
-
 function G.FUNCS.jkrldts_btn_1(e)
     JKRLDTS.button_handler(1, e)
 end
@@ -194,8 +159,11 @@ function G.FUNCS.jkrldts_btn_4(e)
 end
 
 function JKRLDTS.button_handler(num, e)
-    local old = G.GAME.current_loadout or 1
-    e.parent.children[old+1].config.colour = G.C.RED
+    local old = G.GAME.current_loadout
+    if old then
+        JKRLDTS.save_loadout(old)
+        e.parent.children[old].config.colour = G.C.RED
+    end
     e.config.colour = G.C.GREEN
     G.GAME.current_loadout = num
     JKRLDTS.load_loadout(num)
