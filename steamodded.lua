@@ -21,7 +21,6 @@ JKRLDTS.modules = {
     "id",
     "loadouts",
     "ui",
-    "keybinds"
 }
 
 for i, v in ipairs(JKRLDTS.modules) do
