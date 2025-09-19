@@ -47,35 +47,6 @@ function G:start_run(args)
                     n = G.UIT.C,
                     config = {
                         align = "tm",
-                        minw = 1,
-                        padding = 0.1,
-                        r = 0.1,
-                        hover = true,
-                        colour = G.C.RED,
-                        shadow = true,
-                        button = "jkrldts_load",
-                    },
-                    nodes = {
-                        {
-                            n = G.UIT.R,
-                            config = { align = "bcm", padding = 0 },
-                            nodes = {
-                                {
-                                    n = G.UIT.T,
-                                    config = {
-                                        text = "Load",
-                                        scale = 0.35,
-                                        colour = G.C.UI.TEXT_LIGHT
-                                    }
-                                }
-                            }
-                        },
-                    }
-                },
-                {
-                    n = G.UIT.C,
-                    config = {
-                        align = "tm",
                         minw = 0.5,
                         padding = 0.1,
                         r = 0.1,
@@ -206,12 +177,6 @@ function G.FUNCS.jkrldts_save()
     end
 end
 
-function G.FUNCS.jkrldts_load()
-    if G.GAME.current_loadout then
-        JKRLDTS.load_loadout(G.GAME.current_loadout or 0)
-    end
-end
-
 function G.FUNCS.jkrldts_btn_1(e)
     JKRLDTS.button_handler(1, e)
 end
@@ -230,7 +195,8 @@ end
 
 function JKRLDTS.button_handler(num, e)
     local old = G.GAME.current_loadout or 1
-    e.parent.children[old+2].config.colour = G.C.RED
+    e.parent.children[old+1].config.colour = G.C.RED
     e.config.colour = G.C.GREEN
     G.GAME.current_loadout = num
+    JKRLDTS.load_loadout(num)
 end
