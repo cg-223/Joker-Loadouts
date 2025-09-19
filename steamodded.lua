@@ -1,3 +1,7 @@
+---@diagnostic disable-next-line: param-type-mismatch
+for i, v in pairs(JKRLDTS) do
+    SMODS.current_mod[i] = v
+end
 JKRLDTS = SMODS.current_mod
 
 
@@ -14,15 +18,3 @@ for i, v in pairs(JKRLDTS.default_config) do
 end
 
 SMODS.save_mod_config(JKRLDTS)
-
-
-JKRLDTS.modules = {
-    "config",
-    "id",
-    "loadouts",
-    "ui",
-}
-
-for i, v in ipairs(JKRLDTS.modules) do
-    assert(SMODS.load_file("modules/"..v..".lua"))()
-end

@@ -139,6 +139,8 @@ function G:start_run(args)
             bond = 'Weak'
         }
     }
+    G.GAME.current_loadout = G.GAME.current_loadout or 1
+    self.jkrldts_extra_buttons.UIRoot.children[G.GAME.current_loadout].config.colour = G.C.GREEN
     self.HUD:recalculate()
 end
 
@@ -158,10 +160,12 @@ function G.FUNCS.jkrldts_btn_4(e)
     JKRLDTS.button_handler(4, e)
 end
 
-function JKRLDTS.button_handler(num, e)
+function JKRLDTS.button_handler(num, e, dont_save)
     local old = G.GAME.current_loadout
     if old then
-        JKRLDTS.save_loadout(old)
+        if not dont_save then
+            JKRLDTS.save_loadout(old)
+        end
         e.parent.children[old].config.colour = G.C.RED
     end
     e.config.colour = G.C.GREEN
