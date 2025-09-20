@@ -1,3 +1,4 @@
+assert(JKRLDTS, "Joker Loadouts is improperly nested. Ensure it is in a top-layer folder in your mods directory.")
 ---@diagnostic disable-next-line: param-type-mismatch
 for i, v in pairs(JKRLDTS) do
     SMODS.current_mod[i] = v
