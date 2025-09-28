@@ -1,5 +1,5 @@
-local game_start_run_ref = G.start_run
-function G:start_run(args)
+local game_start_run_ref = Game.start_run
+function Game:start_run(args)
     game_start_run_ref(self, args)
 
     self.jkrldts_extra_buttons = UIBox {

@@ -15,8 +15,8 @@ function JKRLDTS.jkr_from_id(id)
     return assert(G.loadouts_map[id], "Bad ID provided, did the relevant joker get removed?")
 end
 
-local old = G.start_run
-function G.start_run(...)
+local old = Game.start_run
+function Game.start_run(...)
     local ret = old(...)
     G.loadouts_map = {}
 
